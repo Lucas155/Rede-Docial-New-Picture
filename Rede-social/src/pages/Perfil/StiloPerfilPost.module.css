@@ -1,0 +1,80 @@
+.img {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 17%;
+  margin-top: -20%;
+}
+
+.title{
+  font-size: 3rem;
+  color: black !important;
+  margin-left: 10%;
+}
+
+.inputDescricao{
+  border: 1px solid #eee;
+  color: #fff;
+  display: block;
+  width: 30%;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  background: #333;
+  transition: 0.2s;
+  margin-left: 10%;
+}
+
+.file{
+  background: white !important;
+  color: #000;
+  border: 1px solid #fff;
+  padding: 0px;
+  margin: 18px;
+}
+
+.buttonPost{
+  width: 32vw;
+  margin-left: 10%;
+  background: #000;
+}
+
+.preview {
+  width: 25%;
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center center;
+}
+
+.preview::after {
+  content: '';
+  display: block;
+  height: 0px;
+  padding-bottom: 100%;
+}
+
+.photoPost input{
+  margin-left: 10%;
+}
+
+.photoPost label{
+  color: black;
+  margin-left: 10%;
+  font-weight: bold;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.arquivo {
+  padding: 10px 13px;
+  width: 30%;
+  background-color: #333;
+  color: #fff !important;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  margin-bottom: 10px;
+}
