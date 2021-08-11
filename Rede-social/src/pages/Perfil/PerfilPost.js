@@ -5,18 +5,21 @@ import styles from  './StiloPerfilPost.module.css';
 import useForm from '../../Hooks/UseForm';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import { UserContext } from '../../UserContext';
 
 const PerfilPost = () => {
     const descricao = useForm();
     const [img, setImg] = React.useState({});
+    const {data} = React.useContext(UserContext);
     const navigate = useNavigate();
 
     function handleSubmit(event){
         event.preventDefault();
         
         const formData = new FormData();
-         formData.append("img", img.raw);
-         formData.append('descricao', descricao.value);       
+          formData.append("img", img.raw);
+          formData.append('descricao', descricao.value);       
+          formData.append("author", data.Username);
 
          fetch('http://localhost:8080/api', {
            method: 'POST',
@@ -31,8 +34,6 @@ const PerfilPost = () => {
              console.log(json);
              return json;
            });
-
-           navigate('/feed');
 
     }
 

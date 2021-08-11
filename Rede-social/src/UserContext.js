@@ -76,7 +76,7 @@ React.useEffect(() =>{
     
 
     return (
-        <UserContext.Provider value={{ userLogin, userLogout, data, error, loading, login }}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{ userLogin, userLogout, setData, data, error, loading, login }}>{children}</UserContext.Provider>
     )
 }
 

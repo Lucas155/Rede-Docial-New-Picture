@@ -12,7 +12,7 @@ const Login = () => {
     const password = useForm();
     const [login, setLogin] = React.useState(false);
     const navigate = useNavigate();
-    const { userLogin } = React.useContext(UserContext);
+    const { userLogin, setData, data } = React.useContext(UserContext);
     
     function handleSubmit(event) {
       event.preventDefault();
@@ -31,16 +31,17 @@ const Login = () => {
          return response.json();
        })
        .then((json) => {
+         setData(json);
+        //console.log(json.Username);
         console.log(json.ok);
-
-        if(json.ok === 'true'){
+        if(json.ok != 'false'){
           navigate('/feed');
-        }
-         
+        }       
          return json;        
        });
 
   } 
+  //console.log(data);
 
   return (
     <div>
@@ -55,8 +56,7 @@ const Login = () => {
         <div className='subtitulo'>
           <Link className='link' to="/loginReset">Esqueceu sua senha? - </Link>
           <Link className='link'  to="/loginCreate">Inscrever-se no NewPhoto</Link>
-        </div>
-        
+        </div> 
       </div>
     </div>
   );

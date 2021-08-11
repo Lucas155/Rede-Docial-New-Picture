@@ -1,0 +1,37 @@
+.imgs{
+    width: 450px;
+    height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px;
+    padding-top: 50px;
+    padding-bottom: 150px; 
+    box-shadow: 3px 3px 3px 3px #888;
+}
+
+.post{
+    width: 450px;
+    height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px;
+    padding-bottom: 150px; 
+    box-shadow: 3px 3px 3px 3px #888;
+    margin-top: 30px
+}
+
+.post img{
+    width: 450px;
+    height: 450px;
+}
+
+.input-coment{
+    background-color: white;
+    padding-top: 12px;
+    margin-top: 38px;
+    width: 444px;
+    border-top: 2px solid black;
+    resize: none;
+}

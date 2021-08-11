@@ -58,11 +58,11 @@ app.post('/login', function(req, res){
 						var login = results[i];
 						if(login.Email == dados.Email){
 							break;
-						}				
+						}	
 					}
-
+					console.log(login.Username);
 					if(dados.Email == login.Email && dados.Password == login.Password){
-						res.json({'ok' : 'true'});
+						res.json(login);
 					}else {
 						res.json({'ok' : 'false'});
 					}
@@ -134,10 +134,13 @@ app.post('/api', function(req, res){
 			res.status(500).json({error: err});
 			return;
 		}
+		
+		var imagem = 'http://localhost:8080/imagens/' + url_imagem;
 
 		var dados = {
-			url_imagem: url_imagem,
-			descricao: req.body.descricao
+			url_imagem: imagem,
+			descricao: req.body.descricao,
+			author: req.body.author 
 		}
 
 		db.open( function(err, mongoclient){
@@ -216,6 +219,7 @@ app.post('/usuario/:Email', function(req, res){
 	db.open( function(err, mongoclient){
 		mongoclient.collection('login', function(err, collection){
 			collection.findOne({}, function(err, results){
+				//console.log(results); 
 				collection.update(
 					{ _id : objectId(results._id) },
 					{ $set : {Password: req.body.Password}},
@@ -235,6 +239,59 @@ app.post('/usuario/:Email', function(req, res){
 	});
 
 });
+
+
+app.post('/perfil/', function(req, res){
+
+	res.setHeader("Access-Control-Allow-Origin", "*");
+
+	var dados = req.body;
+	console.log(dados);
+
+	db.open( function(err, mongoclient){
+		mongoclient.collection('postagens', function(err, collection){
+			collection.find().toArray(function(err, results){
+				
+				///console.log(results); 
+				const array = [];
+				for (var i in results) {
+					var author = results[i];
+					if(author.author == dados.author){
+						array.push(author);
+						console.log(array);
+					}				
+				}
+
+				if(err){
+					res.json(err);
+				} else {
+					res.status(200).json(array);
+				}
+				mongoclient.close();
+				
+			});		
+		});
+	});
+
+});
+
+/*
+app.get('/usuario/:id', function(req, res){
+	db.open( function(err, mongoclient){
+		mongoclient.collection('login', function(err, collection){
+			collection.find(objectId(req.params.id)).toArray(function(err, results){
+				if(err){
+					res.json(err);
+				} else {
+					res.status(200).json(results);
+					console.log(results);
+				}
+				mongoclient.close();
+			});
+		});
+	});
+
+});*/
 
 //PUT by ID (update)
 /*app.put('/api/:id', function(req, res){
