@@ -1,7 +1,7 @@
 import React from 'react';
+import styles from './stiloLogin.module.css';
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
-import style from './stilo-login.css';
 import useForm from '../../Hooks/UseForm';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,9 +40,9 @@ const LoginCreate = () => {
     }
 
     return(
-        <div className="App-login">
+        <div className={styles.AppLogin}>
             <h1>Criar sua conta</h1>
-            <form className="login" onSubmit={handleSubmit}>
+            <form className={styles.login} onSubmit={handleSubmit}>
                 <Input label="Usuário" type="text" name="Username" {...username}/>
                 <Input label="Email" type="text" name="email" {...email}/>
                 <Input label="Senha" type="password" name="password" {...password}/>

@@ -1,0 +1,18 @@
+.post{
+    float: left;
+    margin: 14px;
+
+}
+
+.post img{
+    width: 320px;
+    height: 320px;
+    margin-left: 50%;
+}
+
+ .exluir .exluir2{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 30px;
+}

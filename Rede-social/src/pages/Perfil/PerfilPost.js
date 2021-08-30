@@ -13,6 +13,8 @@ const PerfilPost = () => {
     const {data} = React.useContext(UserContext);
     const navigate = useNavigate();
 
+    console.log(img);
+
     function handleSubmit(event){
         event.preventDefault();
         
@@ -34,6 +36,9 @@ const PerfilPost = () => {
              console.log(json);
              return json;
            });
+
+           alert("Imagem foi Postada");
+           setImg('');
 
     }
 

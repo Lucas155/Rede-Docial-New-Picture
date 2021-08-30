@@ -1,0 +1,26 @@
+.configuracoes{
+    width: 60%;
+    height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px;
+    padding-bottom: 150px; 
+    box-shadow: 3px 3px 3px 3px #888;
+    margin-top: 30px
+}
+
+.configuracoes form{
+    margin-left: 23%;
+
+}
+
+.configuracoes label{
+    font-weight: bold;
+    color: black;
+}
+
+.configuracoes h1{
+    text-align: center;
+    color: black;
+}

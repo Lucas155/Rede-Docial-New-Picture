@@ -26,7 +26,7 @@ li.dropdown {
   display: inline-block;
 }
 
-.dropdown-content {
+.dropdownContent {
   display: none;
   position: absolute;
   background-color: #333;
@@ -35,7 +35,7 @@ li.dropdown {
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdownContent a {
   color: white;
   padding: 6px 6px;
   text-decoration: none;
@@ -43,9 +43,9 @@ li.dropdown {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #111;}
+.dropdownContent a:hover {background-color: #111;}
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdownContent {
   display: block;
 }
 

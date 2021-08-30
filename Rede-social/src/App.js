@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './pages/Login/index';
 import Feed from './pages/Feed/Feed';
 import Perfil from './pages/Perfil/Perfil';
+import Configuracoes from './pages/Perfil/Configuracoes';
 import PerfilPost from './pages/Perfil/PerfilPost';
 import Formulario from './pages/Formulario/Formulario';
 import LoginCreate from './pages/Login/LoginCreate';
@@ -22,6 +23,7 @@ function App() {
           <Route path="feed" element={<Feed />} /> 
           <Route path="perfil" element={<Perfil />} />
           <Route path="PerfilPost" element={<PerfilPost />} /> 
+          <Route path="Configuracoes" element={<Configuracoes />} /> 
           <Route path="formulario" element={<Formulario />} />
           <Route path="loginCreate" element={<LoginCreate />} />
           <Route path="loginReset" element={<LoginReset />} />                    
