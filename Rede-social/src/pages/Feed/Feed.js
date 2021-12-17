@@ -5,25 +5,25 @@ import heart from '../../Assets/like_heart.png';
 import heart2 from '../../Assets/heart_like_red.png';
 import {NavLink, useNavigate} from 'react-router-dom';
 //import  Notificacao from '../../components/notificação/Notificacao';
-//import Comentario from '../../components/Comentario/Comentario';
+import Comentario from '../../components/Comentario/Comentario';
 import Formulario from '../../components/Comentario/Comentario';
 import Header from '../../components/Header/Header';
+import { UserContext } from '../../UserContext';
+import FeedModal from './FeedModal';
 
 const Feed = () => {
 const [ativo, setAtivo] = React.useState(false);
 const [dados, setDados] = React.useState({nome: 'Lucas', idade:'26'});
 const [contar, setContar] = React.useState(1);
 const [items, setItems] = React.useState(['Item 1']);
-const [data, setData] = React.useState(null);
+const [feed, setFeed] = React.useState(null);
 const [like, setLike] = React.useState(false);
 const [comment, setComment] = React.useState('');
-
-
-function handelClick3 (){
-    setAtivo(!ativo);
-    setDados({...dados, faculdade: 'possui Faculdade'});
-}
-
+const [comentarios, setComentarios] = React.useState([]);
+const { data } = React.useContext(UserContext);
+const [modalPhoto, setModalPhoto] = React.useState(null);
+const [url, setUrl] = React.useState(null);
+const [id, setId] = React.useState(null);
 
 
 function handelClick1 (){
@@ -33,10 +33,27 @@ function handelClick1 (){
 
 function handleSubmit(event) {
     event.preventDefault();
-    alert(comment);
     setComment('');
-  
-  }
+    const id = "612c0ed5400750544c50776a";
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("comentarios", comment);
+
+    fetch('http://localhost:8080/comentarios', {
+        method: 'POST',
+        body: formData,
+
+    })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((json) => {
+          console.log(json);
+          return json;
+        });
+    
+}
 
 function clickLike(){
 
@@ -47,42 +64,78 @@ function clickLike(){
     }
 }
 
-
 React.useEffect(() => {
 
     fetch('http://localhost:8080/api', {
 
     })
       .then((response) => {
-       console.log(response);
+       //console.log(response);
         return response.json();
       })
       .then((json) => {
-         setData(json);
-         console.log(json);
+        setFeed(json);
+         //console.log(json);
          return json;        
      });
      
 }, []);
 
-   /// console.log(data[0].comentarios[0]);
+/*
+    console.log(feed[0].comentarios);
+    console.log(data[0].comentarios.length);
 
-    if(data)
+    const numbers = [1, 2, 3, 4, 5];
+    const listItems = numbers.map((number) =>
+    <li>{number}</li>
+    );*/
+
+   //console.log(feed[0].comentarios);
+
+   function handleOutSideClick(event){
+       console.log(event.target);
+       console.log(event.currentTarget);
+  }
+
+  function handleClick(event){
+      var photo = event.target.src;
+      var ids = event.target.id;
+      setId(ids);
+      
+    if(modalPhoto == null){
+          setModalPhoto(photo);
+    }
+  }
+
+    if(feed)
     
     return (
         <div>
             <Header/>
 
-           {data.map((photo) => (
+            {modalPhoto && (
+                <FeedModal setModalPhoto={setModalPhoto} photo={modalPhoto} comentarios={feed} id={id}/>
+            )}
+
+           {feed.map((photo) => (
                 <section className={styles.post}>
                     <h5>{photo.author}</h5>
-                    <img src={photo.url_imagem}/>
+                    <img src={photo.url_imagem} id={photo._id} onClick={handleClick}/>
                     {like ? (
                         <a onClick={clickLike} className={styles.like}><img src={heart2}/></a>
                         ) : (
                         <a onClick={clickLike} className={styles.like}><img src={heart}/></a>
                     )}
-                    {/*data[0].comentarios[0]*/}
+                    <div>
+                        {/*<ul className={styles.comments}>
+                            {feed[0].comentarios.map((comentarios) => (
+                                <li key={{comentarios}}>
+                                    <b>{photo.author}:</b>
+                                    <span>{comentarios}</span>                        
+                                </li>
+                            ))}
+                        </ul>*/}
+                    </div>
                     <div className={styles.linha}/>
                     <textarea id="comment" name="comment" className={styles.inputComent} placeholder="Adicione um comentário..." value={comment} onChange={({ target }) => setComment(target.value)}/>
                     <a className={styles.enviar}><img onClick={handleSubmit} src={enviar}/></a>                           

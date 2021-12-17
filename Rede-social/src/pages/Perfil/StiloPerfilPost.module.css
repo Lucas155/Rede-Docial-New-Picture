@@ -36,6 +36,14 @@
   width: 32vw;
   margin-left: 10%;
   background: #000;
+  width: 32.5vw;
+  height: 40px;
+  margin: 15px;
+  margin-left: 10%;
+  background: #000;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.4rem;
 }
 
 .preview {

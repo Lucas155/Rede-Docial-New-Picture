@@ -5,16 +5,17 @@ const Comentario = () => {
 const [comentarios, setComentarios] = React.useState([]);
 const [input, setInput] = React.useState('');
 const inputElement = React.useRef('');
+const author = React.useState('lucas');
 
 function handClick(){
-    setComentarios([...comentarios, input]);
+    setComentarios([...comentarios, ]);
     setInput('');
     inputElement.current.focus();
+    console.log(input)
 }
 
     return (
-        <div>
-            
+        <div>       
             <ul>
                 {comentarios.map((comentarios) => (
                     <li key={comentarios}>{comentarios}</li>

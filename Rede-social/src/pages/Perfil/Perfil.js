@@ -1,10 +1,10 @@
 import React from 'react'
-import excluir from '../../Assets/excluir.png';
 import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
 import Header from '../../components/Header/Header';
 import styles from  './stiloPerfil.module.css';
 import { UserContext } from '../../UserContext';
+import FeedModal from '../Feed/FeedModal';
 
 const Perfil = () => {
     const [id, setId] = React.useState(null);
@@ -12,7 +12,8 @@ const Perfil = () => {
     const [showResults, setShowResults] = React.useState(false)
     const onClick = () => setShowResults(true)
     const [dataPhoto, setDataPhoto] = React.useState(null);
-    const {data } = React.useContext(UserContext);
+    const [modalPhoto, setModalPhoto] = React.useState(null);
+
     const navigate = useNavigate();
 
     const Results = () => (
@@ -26,23 +27,21 @@ const Perfil = () => {
       }
 
       React.useEffect(() => {
-        const author = data.Username;
-        ///const author = 'Lucas';
+        const Username = window.localStorage.getItem('Username');
+        const User = window.localStorage.getItem('id');
 
         const formData = new FormData();
-        formData.append('author', author);       
+        formData.append('author', Username);       
 
         fetch(`http://localhost:8080/perfil/`, {
             method: 'POST',
-           body: formData,
+            body: formData,
         })
           .then((response) => {
-           console.log(response);
             return response.json();
           })
           .then((json) => {
             setDataPhoto(json);
-             console.log(json);
              return json;        
          });
          
@@ -69,24 +68,40 @@ const Perfil = () => {
 
     }
 
+    function handleClick2(event){
+
+      var photo = event.target.src;
+      var ids = event.target.id;
+      setId(ids);
+
+      if(modalPhoto == null){
+        setModalPhoto(photo);
+      }
+    }
+
     if(dataPhoto)
+
     return (
       <div>
           <Header/>
 
+          {modalPhoto && (
+                <FeedModal setModalPhoto={setModalPhoto} photo={modalPhoto} comentarios={dataPhoto} id={id} />
+          )}
+
           {dataPhoto.map((photo) => (
                 <div>      
                     <div>
-                        <div className={styles.post}>
-                            <a className={styles.exluir}><img value={photo._id} onClick={() => handelClick(setId(photo._id))} className={styles.exluir2}  src={excluir}/></a>                           
-                            <img className={styles.teste} value={photo._id} src={photo.url_imagem} />
+                        <div className={styles.post}>             
+                           <img className={styles.teste} id={photo._id} src={photo.url_imagem} onClick={handleClick2} />                          
                         </div>                        
                     </div>
                 </div>
            ))}
 
-      </div>
+      </div> 
     );
+
   else return null;
 
 }

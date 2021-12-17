@@ -1,0 +1,116 @@
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    z-index: 1000;
+    padding: 2rem calc(4rem + 15px) 2rem 4rem;
+  }
+
+  .photo {
+    margin: auto;
+    height: 40rem;
+    border-radius: 0.2rem;
+    background: white;
+    display: grid;
+    grid-template-columns: 36rem 20rem;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    transform: scale(0.8);
+    animation: scaleUp 0.3s forwards;
+  }
+
+  .photo h1{
+    color: black;
+  }
+
+  .imgs{
+    width: 100%;
+    height: 640px;
+  }
+
+  .inputModal{
+    width: 25%;
+    height: 45px;
+    border: none;
+    color: black;
+    background: white;
+    position: absolute;
+    left: 66%;
+    top: 93%;
+    resize: none;
+  }
+
+.x{
+  margin-left: 300px;
+}
+
+.deleteImagem{
+  margin-left: 300px;
+  margin-top: 30px;
+
+}
+
+.curtir{
+  border: solid black 2px;
+  width: 322px;
+  height: 83px;
+  position: absolute;
+  left: 64%;
+  top: 75%;
+}
+
+.comentar{
+  position: absolute;
+  left: 91%;
+  top: 93%;
+  width: 74px;
+  color: black;
+  background: white;
+  border: none;
+  font-weight: bold;
+}
+
+.comentar:hover{
+  color:rgb(0, 162, 255);
+
+}
+
+.inputModal:focus, .inputModal:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+} 
+
+.comentarios{
+  border-top: solid black 2px;
+  width: 322px;
+  height: 86px;
+  position: absolute;
+  left: 64%;
+  top: 13%;
+}
+
+.author{
+  margin-top: -18%;
+  margin-left: 25%;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.comments{
+  background-color: white;
+}
+
+.comments li {
+  float: none;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.comments b {
+  font-size: 15px;
+}

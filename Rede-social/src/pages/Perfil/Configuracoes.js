@@ -13,8 +13,6 @@ const Perfil = () => {
     const Email = useForm();
     const Password = useForm();
 
-    console.log(data);
-
     function handleSubmit(event){
         event.preventDefault();
 
@@ -48,14 +46,14 @@ const Perfil = () => {
     //console.log(data.Username);
     //console.log(Email);
 
-if(data)
+//if(data)
   return (
       <section>
           <Header/>
           <div className={styles.configuracoes}>
             <h1>Editar perfil</h1>
             <form onSubmit={handleSubmit}>
-                <Input label='Nome' name="nome" {...Username} />
+                {/*<Input label='Nome' name="nome" {...Username} />*/}
                 <Input label='Email' name="email" {...Email} />
                 <Input label='Senha' type="senha" {...Password}/>
 

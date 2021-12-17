@@ -3,45 +3,19 @@ import styles from './stiloLogin.module.css';
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
 import useForm from '../../Hooks/UseForm';
-import {NavLink, useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 
 const Login = () => {
     const email = useForm();
     const password = useForm();
-    const [login, setLogin] = React.useState(false);
-    const navigate = useNavigate();
-    const { userLogin, setData, data } = React.useContext(UserContext);
-    
+    const {userLogin } = React.useContext(UserContext);
+
     function handleSubmit(event) {
       event.preventDefault();
 
-     const formData = new FormData();
-     formData.append("Email", email.value);
-     formData.append('Password', password.value);       
-  
-     fetch('http://localhost:8080/login', {
-       method: 'POST',
-       body: formData,
-
-     })
-       .then((response) => {
-        console.log(response);
-         return response.json();
-       })
-       .then((json) => {
-         setData(json);
-        //console.log(json.Username);
-        console.log(json.ok);
-        if(json.ok != 'false'){
-          navigate('/feed');
-        }       
-         return json;        
-       });
-
-  } 
-  //console.log(data);
+      userLogin(email.value, password.value);
+    }
 
   return (
     <div>
@@ -55,7 +29,7 @@ const Login = () => {
 
         <div className={styles.subtitulo}>
           <Link className={styles.link} to="/loginReset">Esqueceu sua senha? - </Link>
-          <Link className={styles.link}  to="/loginCreate">Inscrever-se no NewPhoto</Link>
+          <Link className={styles.link}  to="/loginCreate">Inscrever-se no New Picture</Link>
         </div> 
       </div>
     </div>

@@ -65,3 +65,18 @@
     height: 25px;
     margin-left: 5px;
 }
+
+ 
+.comments{
+    background-color: white;
+}
+
+.comments li {
+    float: none;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.comments b {
+    font-size: 15px;
+}

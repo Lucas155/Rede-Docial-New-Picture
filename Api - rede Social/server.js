@@ -139,8 +139,7 @@ app.post('/api', function(req, res){
 			res.status(500).json({error: err});
 			return;
 		}
-	
-		
+			
 		var imagem = 'http://localhost:8080/imagens/' + url_imagem;
 
 		var dados = {
@@ -180,7 +179,7 @@ app.get('/imagens/:imagem', function(req, res){
 	})
 });
 
-// lista todas postagem
+// listar todas postagem
 app.get('/api', function(req, res){
 
 	res.setHeader("Access-Control-Allow-Origin", "*");
@@ -202,19 +201,40 @@ app.get('/api', function(req, res){
 
 //GET by ID (ready)
 app.get('/api/:id', function(req, res){
+
 	db.open( function(err, mongoclient){
 		mongoclient.collection('postagens', function(err, collection){
 			collection.find(objectId(req.params.id)).toArray(function(err, results){
 				if(err){
 					res.json(err);
-				} else {
+				}else {
 					res.status(200).json(results);
 				}
 				mongoclient.close();
 			});
 		});
 	});
+});
 
+app.post('/postagen', function(req, res){
+
+	res.setHeader("Access-Control-Allow-Origin", "*");
+
+	console.log('teste', req.body._id);
+
+	db.open( function(err, mongoclient){
+		mongoclient.collection('postagens', function(err, collection){
+			collection.find(objectId(req.body._id)).toArray(function(err, results){
+				if(err){
+					res.json(err);
+				}else {
+					res.status(200).json(results);
+					console.log(results);
+				}
+				mongoclient.close();
+			});
+		});
+	});
 });
 
 //update password
@@ -280,13 +300,12 @@ app.post('/perfil/', function(req, res){
 	res.setHeader("Access-Control-Allow-Origin", "*");
 
 	var dados = req.body;
-	console.log(dados);
 
 	db.open( function(err, mongoclient){
 		mongoclient.collection('postagens', function(err, collection){
 			collection.find().toArray(function(err, results){
 				
-				///console.log(results); 
+				//console.log(results); 
 				const array = [];
 				for (var i in results) {
 					var author = results[i];
@@ -357,8 +376,6 @@ app.post('/postagem', function(req, res){
 	fs.writeFile(path_origem, path_destino, 'base64', (err) => {
 		if(err) console.log(err);
 	
-
-	
 	});
 
 });
@@ -382,17 +399,20 @@ app.get('/usuario/:id', function(req, res){
 });*/
 
 //PUT by ID (update)
-/*app.put('/api/:id', function(req, res){
+app.post('/comentarios', function(req, res){
+
 	
 	db.open( function(err, mongoclient){
 		mongoclient.collection('postagens', function(err, collection){
 			collection.update(
-				{ _id : objectId(req.params.id) },
+				{ _id : objectId(req.body.id) },
 				{ $push : 	{
-								comentarios : {
-									id_comentario : new objectId(),
-									comentario : req.body.comentario
-								}
+								comentarios : req.body.comentarios
+
+								/*comentarios : {
+									//id_comentario : new objectId(),
+									comentario : req.body.comentarios
+								}*/
 							}
 				},
 				{},
@@ -436,4 +456,4 @@ app.delete('/api/:id', function(req, res){
 		});
 	});
 
-});*/
+});

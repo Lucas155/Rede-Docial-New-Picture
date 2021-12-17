@@ -10,10 +10,9 @@ import { UserContext } from '../../UserContext';
 const PerfilPost = () => {
     const descricao = useForm();
     const [img, setImg] = React.useState({});
-    const {data} = React.useContext(UserContext);
     const navigate = useNavigate();
-
-    console.log(img);
+    const Username = window.localStorage.getItem('Username');
+    const User = window.localStorage.getItem('id');
 
     function handleSubmit(event){
         event.preventDefault();
@@ -21,7 +20,7 @@ const PerfilPost = () => {
         const formData = new FormData();
           formData.append("img", img.raw);
           formData.append('descricao', descricao.value);       
-          formData.append("author", data.Username);
+          formData.append("author", Username);
 
          fetch('http://localhost:8080/api', {
            method: 'POST',
@@ -39,7 +38,7 @@ const PerfilPost = () => {
 
            alert("Imagem foi Postada");
            setImg('');
-
+           console.log(descricao);
     }
 
     function handleImgChange({target}){

@@ -1,0 +1,70 @@
+
+.listaMessagens{
+    margin-right: 60%;
+    border-right: 1px solid black;
+    height: 500px;
+}
+
+.inputComent{
+    width: 137%;
+    margin-left: 105%;
+    margin-top: 455px;
+}
+
+.chat {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.amigos{
+    width: 27%;
+    height: 350px;
+    margin-left: 20%;
+    display: block;
+    border: 2px solid;
+    padding-bottom: 150px;
+    /*box-shadow: 3px 3px 3px 3px #888;*/
+    margin-top: 30px;
+}
+
+.amigos div{
+    border-bottom: black 2px solid;
+    width: 100%;
+}
+
+.chatConversa{
+    width: 35%;
+    height: 350px;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    padding-bottom: 150px;
+    margin-top: 30px;
+}
+
+.chatConversa div{
+    border-bottom: black 2px solid;
+    width: 100%;
+}
+
+.chatMessegen{
+    width: 85%;
+    margin: 5px;
+    position: relative;
+    top: 399px;
+    resize: none;
+    border: 2px solid black;
+    border-radius: 25px
+}
+
+.enviar{
+    position: relative;
+    top: 387px;
+    left: 10px;
+}
+
+.chatMessegen:focus, .chatMessegen:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+} 
