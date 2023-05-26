@@ -17,7 +17,7 @@
     border-radius: 12px;
   }
   
-  input{
+  .inputLogin{
     margin: 4px 0 8px;
     padding: 12px;
     border: 2px solid white;
@@ -37,15 +37,6 @@
   label{
     color: #fff;
   }
-  
-  /*.button {
-    padding: 12px;
-    border-radius: 25px;
-    margin-top: 12px;
-    background: #00BFFF;
-    color: white;
-    font-weight: 800;
-  }*/
 
   .subtitulo{
     padding: 35px;
@@ -54,6 +45,10 @@
   }
   
   .link{
-    color: #00BFFF;
+    color: rgb(61, 106, 255);
 
+  }
+
+  .erro{
+    color: red;
   }

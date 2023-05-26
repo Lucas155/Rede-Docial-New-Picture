@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '../../components/Form/Input';
-import Button from '../../components/Form/Button';
+import Input from '../../components/Form/Input/Index';
+import Button from '../../components/Form/Button/Index';
 import styles from  './StiloPerfilPost.module.css';
 import useForm from '../../Hooks/UseForm';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { UserContext } from '../../UserContext';
 const PerfilPost = () => {
     const descricao = useForm();
     const [img, setImg] = React.useState({});
+    const [Name, setname] = React.useState('');
     const navigate = useNavigate();
     const Username = window.localStorage.getItem('Username');
     const User = window.localStorage.getItem('id');
@@ -48,20 +49,25 @@ const PerfilPost = () => {
         });
     }
 
+    const handleChange = (event) => {
+      setname(event.target.value);
+      console.log(Name);
+    }
+
   return (
       <section className={styles.photoPost}> 
       <Header/>
           <h1 className={styles.title}>Poste sua foto</h1>  
           <form onSubmit={handleSubmit}>
-            <label className={styles.arquivo}for="arquivo">Enviar Foto</label>
+            <label className={styles.arquivo} for="arquivo">Enviar Foto</label>
             <input className={styles.file} type="file" name="arquivo" id="arquivo" onChange={handleImgChange}/>
             <label>Legenda</label>
-            <textarea className={styles.inputDescricao}  type="text" name="descricao" {...descricao}/>
+            <textarea className={styles.inputDescricao}  type="text" name="descricao" {...descricao} />
             <Button className={styles.buttonPost}>Publicar</Button>
           </form>
           <div className={styles.img}>
                 {img.preview && (
-                    <div className={styles.preview}    style={{backgroundImage: `url('${img.preview}')`}}></div>
+                    <div className={styles.preview} style={{backgroundImage: `url('${img.preview}')`}}></div>
                 )}    
           </div>
       </section>

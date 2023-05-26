@@ -1,7 +1,30 @@
+.userContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.userDados{
+    margin-left:50px;
+}
+
+.userDados span{
+    margin-left:20px;
+}
+
+.userDados h4{
+    margin-left:20px;
+}
+
+.userPhoto {
+    width: 130px;
+    border-radius: 60px;
+}
+
 .post{
     float: left;
     margin: 14px;
-
 }
 
 .post img{

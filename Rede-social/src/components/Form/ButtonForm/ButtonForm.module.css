@@ -1,0 +1,9 @@
+.buttonForm {
+    width: 32vw;
+    padding: 12px;
+    border-radius: 25px;
+    margin-top: 12px;
+    background: #050505;
+    color: white;
+    font-weight: 800;
+  }

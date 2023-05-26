@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './stiloLogin.module.css';
-import Input from '../../components/Form/Input';
-import Button from '../../components/Form/Button';
+import Input from '../../components/Form/Input/Index';
+import Button from '../../components/Form/Button/Index';
 import useForm from '../../Hooks/UseForm';
 import { useNavigate } from 'react-router-dom';
 

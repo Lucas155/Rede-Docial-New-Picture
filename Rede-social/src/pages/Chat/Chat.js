@@ -20,8 +20,8 @@ const Chat = () => {
                         <p>teste</p>
                     </div>
                     <section>
-                    <textarea className={styles.chatMessegen} placeholder="Messagem..."/>
-                    <a className={styles.enviar}><img src={enviar}/></a>                           
+                        <textarea className={styles.chatMessegen} placeholder="Mensagem..."/>
+                        <a className={styles.enviar}><img src={enviar}/></a>                           
                     </section>
                 </div>
 

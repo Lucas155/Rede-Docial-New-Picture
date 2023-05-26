@@ -1,6 +1,5 @@
 ///require('events').EventEmitter.prototype._maxListeners = 100;
 
-
 var express = require( 'express'),
     bodyParser = require('body-parser'),
 	multiparty = require('connect-multiparty'),
@@ -26,7 +25,7 @@ var db = new mongodb.Db(
 
 console.log('Servidor rododando na porta ' + port); 
 
-app.get('/usuario/:id', function(req, res){
+app.post('/usuario/:id', function(req, res){
 	db.open( function(err, mongoclient){
 		mongoclient.collection('login', function(err, collection){
 			collection.find(objectId(req.params.id)).toArray(function(err, results){
@@ -49,7 +48,7 @@ app.post('/login', function(req, res){
 	res.setHeader("Access-Control-Allow-Origin", "*");
 
 	var dados = req.body;
-
+	
 	db.open( function(err, mongoclient){
 		mongoclient.collection('login', function(err, collection){
 			collection.find().toArray(function(err, results){
@@ -63,13 +62,15 @@ app.post('/login', function(req, res){
 							break;
 						}	
 					}
-					console.log(login.Username);
+
 					if(dados.Email == login.Email && dados.Password == login.Password){
+						console.log('ok');
 						res.json(login);
 					}else {
 						res.json({'ok' : 'false'});
 					}
 				}
+
 				mongoclient.close();
 			});
 		});
@@ -78,9 +79,6 @@ app.post('/login', function(req, res){
 
 // Todos os usuarios
 app.get('/usuarios', function(req, res){
-
-	res.setHeader("Access-Control-Allow-Origin", "*");
-
 	db.open( function(err, mongoclient){
 		mongoclient.collection('login', function(err, collection){
 			collection.find().toArray(function(err, results){
@@ -379,24 +377,6 @@ app.post('/postagem', function(req, res){
 	});
 
 });
-
-/*
-app.get('/usuario/:id', function(req, res){
-	db.open( function(err, mongoclient){
-		mongoclient.collection('login', function(err, collection){
-			collection.find(objectId(req.params.id)).toArray(function(err, results){
-				if(err){
-					res.json(err);
-				} else {
-					res.status(200).json(results);
-					console.log(results);
-				}
-				mongoclient.close();
-			});
-		});
-	});
-
-});*/
 
 //PUT by ID (update)
 app.post('/comentarios', function(req, res){

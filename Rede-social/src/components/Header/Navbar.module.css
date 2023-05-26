@@ -1,70 +1,58 @@
-ul {
+/*.header{
+  position: fixed;
+  width: 100%;
+}*/
+
+.titulo{
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: cursive;
+}
+
+.menu{
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
 }
 
-li {
-  float: right;
-}
-
-li a, .dropbtn {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-  background-color: #111;
-}
-
-li.dropdown {
-  display: inline-block;
-}
-
-.dropdownContent {
-  display: none;
-  position: absolute;
-  background-color: #333;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdownContent a {
-  color: white;
-  padding: 6px 6px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdownContent a:hover {background-color: #111;}
-
-.dropdown:hover .dropdownContent {
-  display: block;
-}
-
-.logo{
-  position: relative;
-  right: 770%;
-  font-weight: 600;
-  font-family: cursive;
-}
-
-img{
-  width: 20px;
+.subMenu{
+  display: flex;
 }
 
 .icone{
-  margin-right: 10px;
-  width: 15px;
+  margin-right: 40px;
+  width: 30px;
 }
 
-.opcoes{
-  margin-left: 145px;
+.subIcone{
+  margin-right: 10px;
+  width: 20px;
+}
+
+.dropdownContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  position: absolute;
+  padding:20px;
+  background-color: #333;
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.dropdownContent a{
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: cursive;
+  margin-top: 20px;
+  font-size: 15px;
 }

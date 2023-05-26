@@ -60,8 +60,12 @@
 
 .enviar{
     position: relative;
-    top: 387px;
+    top: 390px;
     left: 10px;
+}
+
+.enviar img{ 
+    width: 30px;
 }
 
 .chatMessegen:focus, .chatMessegen:focus, select:focus {

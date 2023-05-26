@@ -1,15 +1,29 @@
 import React from 'react'
 import styles from './stiloFeedModal.module.css';
 import x from '../../Assets/fechar.png';
+import heart from '../../Assets/like_heart.png';
+import heart2 from '../../Assets/heart_like_red.png';
+import enviar from '../../Assets/enviar.png';
 import excluir from '../../Assets/excluir.png';
 
 const FeedModal = ({photo, setModalPhoto, id}) => {
-  const [showResults, setShowResults] = React.useState(null);
+  const [excluirPost, setExcluirPost] = React.useState(null);
   const [dados, setDados] = React.useState(true);
+  const [like, setLike] = React.useState(false);
+  const [comment, setComment] = React.useState('');
 
     function handleClick(){
       setModalPhoto(null);
     }
+
+    function clickLike(){
+
+      if(like == false ){
+          setLike(true)
+      }if(like == true){
+          setLike(false)
+      }
+  }
 
     function deleteImg(){
       const confirm = window.confirm('Tem certeza que deseja deletar? ' + id);
@@ -47,7 +61,7 @@ const FeedModal = ({photo, setModalPhoto, id}) => {
           const Username = window.localStorage.getItem('Username');
           var show = json[0].author;
           if(show == Username){
-            setShowResults(true);        
+            setExcluirPost(true);        
           }
 
           return json; 
@@ -56,34 +70,50 @@ const FeedModal = ({photo, setModalPhoto, id}) => {
     }, []);
 
     console.log(dados.comentarios);
+    console.log(dados.coment);
 
     return (
+      <div>
         <div className={styles.modal}>
+            <img onClick={handleClick} className={styles.fechar} src={x}/>
             
             <div className={styles.photo} >
-              <img className={styles.imgs} id={id} src={photo} />
               <div>
-                <img className={styles.x} src={x} onClick={handleClick}  />
-                { showResults ? 
-                <img className={styles.deleteImagem} src={excluir} onClick={deleteImg}/>
-                : null }
-                <p className={styles.author}>{dados.author}</p>
+                <img className={styles.imgs} id={id} src={photo} />
               </div>
+              <div>
+                <div>
+                  <p className={styles.author}>{dados.author}</p>
 
-              <div className={styles.comentarios}>
-                  <ul className={styles.comments}>
-                      <li>
-                        <b>{dados.comentarios}</b>
-                      </li>
-                  </ul>
+                  { excluirPost ? 
+                  <img className={styles.deleteImagem} src={excluir} onClick={deleteImg}/>
+                  : null }
+                </div>
+                <div className={styles.comentarios}>
+                  <p>comentarios</p>
+                  
+                    {/*dados.coment.map((coment) => (
+                            <span>{coment}</span>                        
+                    ))*/}
+           
+                </div>
+                <div>
+                    <div className={styles.novoComentario}>
+                      {like ? (
+                          <a onClick={clickLike} className={styles.like}><img src={heart2}/></a>
+                          ) : (
+                          <a onClick={clickLike} className={styles.like}><img src={heart}/></a>
+                      )}
+                    </div>
+                    <div>
+                        <textarea id="comment" name="comment" className={styles.inputComent} placeholder="Adicione um comentário..." value={comment} onChange={({ target }) => setComment(target.value)}/>
+                        <a className={styles.enviar}><img src={enviar}/></a>
+                    </div>
+                </div>
               </div>
-              <div className={styles.curtir}>
-
-              </div>
-              <textarea className={styles.inputModal} placeholder="Adicione um comentário.."/>
-              <button className={styles.comentar}>Comentar</button>
             </div>
         </div>
+      </div>  
     )
 }
 

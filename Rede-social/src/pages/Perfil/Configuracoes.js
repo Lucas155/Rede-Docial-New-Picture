@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
 import styles from './stiloConfiguracoes.module.css';
-import Input from '../../components/Form/Input';
+import Input from '../../components/Form/InputForm/Index';
 import useForm from '../../Hooks/UseForm';
 import { UserContext } from '../../UserContext';
-import Button from '../../components/Form/Button';
+import Button from '../../components/Form/ButtonForm/Index';
 
 const Perfil = () => {
     const {data } = React.useContext(UserContext);
@@ -54,9 +54,8 @@ const Perfil = () => {
             <h1>Editar perfil</h1>
             <form onSubmit={handleSubmit}>
                 {/*<Input label='Nome' name="nome" {...Username} />*/}
-                <Input label='Email' name="email" {...Email} />
-                <Input label='Senha' type="senha" {...Password}/>
-
+                <Input className={styles.inputConfig} label='Email' name="email" {...Email} />
+                <Input className={styles.inputConfig} label='Senha' type="senha" {...Password}/>
                 <Button>Atualizar Dados</Button>
             </form>
           </div>

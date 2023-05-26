@@ -31,6 +31,7 @@ const userLogout = React.useCallback(async function (){
         .then((json) => {
         console.log(json);
         setData(json);
+        window.localStorage.setItem('Name', json.Name);
         window.localStorage.setItem('Username', json.Username);
         window.localStorage.setItem('id', json._id);
         console.log(json._id);

@@ -9,6 +9,8 @@
   font-size: 3rem;
   color: black !important;
   margin-left: 10%;
+  font-weight: bold;
+  font-family: cursive;
 }
 
 .inputDescricao{
@@ -36,7 +38,7 @@
   width: 32vw;
   margin-left: 10%;
   background: #000;
-  width: 32.5vw;
+  width: 31.5vw;
   height: 40px;
   margin: 15px;
   margin-left: 10%;
@@ -86,3 +88,4 @@ input[type="file"] {
   border-radius: 0.4rem;
   margin-bottom: 10px;
 }
+

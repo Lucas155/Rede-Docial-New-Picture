@@ -95,7 +95,7 @@ React.useEffect(() => {
    function handleOutSideClick(event){
        console.log(event.target);
        console.log(event.currentTarget);
-  }
+    }
 
   function handleClick(event){
       var photo = event.target.src;
@@ -119,7 +119,7 @@ React.useEffect(() => {
 
            {feed.map((photo) => (
                 <section className={styles.post}>
-                    <h5>{photo.author}</h5>
+                    <h5 className={styles.tituloPost}>{photo.author}</h5>
                     <img src={photo.url_imagem} id={photo._id} onClick={handleClick}/>
                     {like ? (
                         <a onClick={clickLike} className={styles.like}><img src={heart2}/></a>
@@ -136,24 +136,13 @@ React.useEffect(() => {
                             ))}
                         </ul>*/}
                     </div>
-                    <div className={styles.linha}/>
-                    <textarea id="comment" name="comment" className={styles.inputComent} placeholder="Adicione um comentário..." value={comment} onChange={({ target }) => setComment(target.value)}/>
-                    <a className={styles.enviar}><img onClick={handleSubmit} src={enviar}/></a>                           
+                    <div>
+                        <div className={styles.linha}/>
+                        <textarea id="comment" name="comment" className={styles.inputComent} placeholder="Adicione um comentário..." value={comment} onChange={({ target }) => setComment(target.value)}/>
+                        <a className={styles.enviar}><img onClick={handleSubmit} src={enviar}/></a>
+                    </div>                      
                 </section>                        
            ))}
-
-           {/* <h1>Feed</h1>
-           <p>{dados.nome}</p>
-           <p>{dados.idade}</p>
-           <p>{dados.faculdade}</p>
-
-            <button onClick={handelClick}>{ativo ? 'ativo' : 'Inativo'}</button><br/>
-
-            {items.map((item) => (
-                <li key={item}>{item}</li>
-            ))}
-            <button onClick={handelClick1}>{contar}</button>
-            <br/> */}
         </div>
     );
     
